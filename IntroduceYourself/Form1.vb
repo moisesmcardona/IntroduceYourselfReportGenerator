@@ -279,49 +279,49 @@ Public Class Form1
             AccountFile = New StreamReader("BienvenidaAccount.txt")
         End If
         Dim currentline As String = ""
-            Dim Account As String = ""
-            Dim Key As String = ""
-            While AccountFile.EndOfStream = False
-                currentline = AccountFile.ReadLine
-                If currentline.Contains("account") Then
-                    Dim GetAccount As String() = currentline.Split("=")
-                    Account = GetAccount(1)
-                ElseIf currentline.Contains("key") Then
-                    Dim GetKey As String() = currentline.Split("=")
-                    Key = GetKey(1)
-                End If
-            End While
-            Try
-                Dim request As System.Net.WebRequest = System.Net.WebRequest.Create("https://api.steem.place/postToSteem/")
-                request.Method = "POST"
-                Dim postData As String = ""
-                If RadioButton1.Checked Then
+        Dim Account As String = ""
+        Dim Key As String = ""
+        While AccountFile.EndOfStream = False
+            currentline = AccountFile.ReadLine
+            If currentline.Contains("account") Then
+                Dim GetAccount As String() = currentline.Split("=")
+                Account = GetAccount(1)
+            ElseIf currentline.Contains("key") Then
+                Dim GetKey As String() = currentline.Split("=")
+                Key = GetKey(1)
+            End If
+        End While
+        Try
+            Dim request As System.Net.WebRequest = System.Net.WebRequest.Create("https://api.steem.place/postToSteem/")
+            request.Method = "POST"
+            Dim postData As String = ""
+            If RadioButton1.Checked Then
                 postData = "title=Bienvenida a los usuarios el día " + FullDate + "&body=" + HttpUtility.UrlEncode(My.Computer.FileSystem.ReadAllText("report-bienvenida-" & TextBox1.Text.Replace("/", "-") & ".txt")) + "&author=" & Account & "&permlink=reporte-" + TextBox1.Text.Replace("/", "-") + "&tags=castellano,spanish,report,reporte,stats,bienvenida,estadisticas,data&pk=" & Key
             Else
 
                 postData = "title=IntroduceYourself posts on " + FullDate + "&body=" + HttpUtility.UrlEncode(My.Computer.FileSystem.ReadAllText("report-introduceyourself-" & TextBox1.Text.Replace("/", "-") & ".txt")) + "&author=" & Account & "&permlink=report-" + TextBox1.Text.Replace("/", "-") + "&tags=report,reporte,stats,new,daily,data&pk=" & Key
             End If
-                Dim byteArray As Byte() = Encoding.UTF8.GetBytes(postData)
-                request.ContentType = "application/x-www-form-urlencoded"
-                request.ContentLength = byteArray.Length
-                Dim dataStream As Stream = request.GetRequestStream()
-                dataStream.Write(byteArray, 0, byteArray.Length)
-                dataStream.Close()
-                Dim response As Net.WebResponse = request.GetResponse()
-                dataStream = response.GetResponseStream()
-                Dim reader As New StreamReader(dataStream)
-                Dim responseFromServer As String = reader.ReadToEnd()
-                reader.Close()
-                dataStream.Close()
-                response.Close()
-                If responseFromServer = "ok" & vbLf Then
-                    MessageBox.Show("Report Generated And posted")
-                Else
-                    MessageBox.Show("An Error occured While posting the report")
-                End If
-            Catch ex As Exception
-                MessageBox.Show("An Error has occurred.")
-            End Try
+            Dim byteArray As Byte() = Encoding.UTF8.GetBytes(postData)
+            request.ContentType = "application/x-www-form-urlencoded"
+            request.ContentLength = byteArray.Length
+            Dim dataStream As Stream = request.GetRequestStream()
+            dataStream.Write(byteArray, 0, byteArray.Length)
+            dataStream.Close()
+            Dim response As Net.WebResponse = request.GetResponse()
+            dataStream = response.GetResponseStream()
+            Dim reader As New StreamReader(dataStream)
+            Dim responseFromServer As String = reader.ReadToEnd()
+            reader.Close()
+            dataStream.Close()
+            response.Close()
+            If responseFromServer = "ok" & vbLf Then
+                MessageBox.Show("Report Generated And posted")
+            Else
+                MessageBox.Show("An Error occured While posting the report")
+            End If
+        Catch ex As Exception
+            MessageBox.Show("An Error has occurred.")
+        End Try
     End Sub
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         If ListBox2.SelectedIndex >= 0 Then
