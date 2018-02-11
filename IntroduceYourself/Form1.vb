@@ -272,11 +272,11 @@ Public Class Form1
         Return FullDate
     End Function
     Private Sub PublishReport(FullDate As String)
-        Dim AccountFile As StreamReader
+        Dim AccountFile As StreamReader = Nothing
         If RadioButton1.Checked Then
-            AccountFile = New StreamReader("IntroduceYourselfAccount.txt")
-        ElseIf RadioButton2.Checked Then
             AccountFile = New StreamReader("BienvenidaAccount.txt")
+        ElseIf RadioButton2.Checked Then
+            AccountFile = New StreamReader("IntroduceYourselfAccount.txt")
         End If
         Dim currentline As String = ""
         Dim Account As String = ""
