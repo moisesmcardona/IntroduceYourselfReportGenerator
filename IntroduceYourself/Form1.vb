@@ -115,7 +115,7 @@ Public Class Form1
                 LogFile.WriteLine(Environment.NewLine & "---------------------" & Environment.NewLine)
                 LogFile.WriteLine("<center>[¡Vota al Witness @castellano!](https://v2.steemconnect.com/sign/account-witness-vote?witness=castellano&approve=1)</center>")
                 LogFile.WriteLine(Environment.NewLine & "---------------------" & Environment.NewLine)
-                LogFile.WriteLine("<center>Reporte generado por el software de @moisesmcardona. [Vótalo como Witness Presionando aquí](https://v2.steemconnect.com/sign/account-witness-vote?witness=moisesmcardona&approve=1)</center>" & Environment.NewLine & Environment.NewLine)
+                LogFile.WriteLine("<center>Reporte generado por el software de @moisesmcardona. [Vótalo como Witness presionando aquí](https://v2.steemconnect.com/sign/account-witness-vote?witness=moisesmcardona&approve=1)</center>" & Environment.NewLine & Environment.NewLine)
                 LogFile.Close()
                 PublishReport(FullDate)
                 SendMessage(FullDate, TextBox1.Text)
