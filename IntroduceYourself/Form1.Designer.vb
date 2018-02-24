@@ -42,11 +42,11 @@ Partial Class Form1
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Button8 = New System.Windows.Forms.Button()
         Me.Button9 = New System.Windows.Forms.Button()
-        Me.SuspendLayout()
+        Me.SuspendLayout
         '
         'ListBox1
         '
-        Me.ListBox1.FormattingEnabled = True
+        Me.ListBox1.FormattingEnabled = true
         Me.ListBox1.Location = New System.Drawing.Point(337, 38)
         Me.ListBox1.Name = "ListBox1"
         Me.ListBox1.Size = New System.Drawing.Size(319, 342)
@@ -59,7 +59,7 @@ Partial Class Form1
         Me.Button1.Size = New System.Drawing.Size(151, 35)
         Me.Button1.TabIndex = 1
         Me.Button1.Text = "Generate Report"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.Button1.UseVisualStyleBackColor = true
         '
         'Button2
         '
@@ -68,7 +68,7 @@ Partial Class Form1
         Me.Button2.Size = New System.Drawing.Size(177, 29)
         Me.Button2.TabIndex = 2
         Me.Button2.Text = "Load/Refresh"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.Button2.UseVisualStyleBackColor = true
         '
         'Button3
         '
@@ -77,11 +77,11 @@ Partial Class Form1
         Me.Button3.Size = New System.Drawing.Size(155, 69)
         Me.Button3.TabIndex = 3
         Me.Button3.Text = "OK"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.Button3.UseVisualStyleBackColor = true
         '
         'ListBox2
         '
-        Me.ListBox2.FormattingEnabled = True
+        Me.ListBox2.FormattingEnabled = true
         Me.ListBox2.Location = New System.Drawing.Point(12, 38)
         Me.ListBox2.Name = "ListBox2"
         Me.ListBox2.Size = New System.Drawing.Size(319, 342)
@@ -94,11 +94,11 @@ Partial Class Form1
         Me.Button5.Size = New System.Drawing.Size(155, 69)
         Me.Button5.TabIndex = 6
         Me.Button5.Text = "NO"
-        Me.Button5.UseVisualStyleBackColor = True
+        Me.Button5.UseVisualStyleBackColor = true
         '
         'ListBox3
         '
-        Me.ListBox3.FormattingEnabled = True
+        Me.ListBox3.FormattingEnabled = true
         Me.ListBox3.Location = New System.Drawing.Point(662, 38)
         Me.ListBox3.Name = "ListBox3"
         Me.ListBox3.Size = New System.Drawing.Size(319, 342)
@@ -111,41 +111,41 @@ Partial Class Form1
         Me.Button7.Size = New System.Drawing.Size(189, 23)
         Me.Button7.TabIndex = 9
         Me.Button7.Text = "Warn"
-        Me.Button7.UseVisualStyleBackColor = True
+        Me.Button7.UseVisualStyleBackColor = true
         '
         'CheckBox1
         '
-        Me.CheckBox1.AutoSize = True
+        Me.CheckBox1.AutoSize = true
         Me.CheckBox1.Location = New System.Drawing.Point(857, 388)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(106, 17)
         Me.CheckBox1.TabIndex = 10
         Me.CheckBox1.Text = "introduceyourself"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.CheckBox1.UseVisualStyleBackColor = true
         '
         'CheckBox2
         '
-        Me.CheckBox2.AutoSize = True
+        Me.CheckBox2.AutoSize = true
         Me.CheckBox2.Location = New System.Drawing.Point(857, 411)
         Me.CheckBox2.Name = "CheckBox2"
         Me.CheckBox2.Size = New System.Drawing.Size(99, 17)
         Me.CheckBox2.TabIndex = 11
         Me.CheckBox2.Text = "introducemyself"
-        Me.CheckBox2.UseVisualStyleBackColor = True
+        Me.CheckBox2.UseVisualStyleBackColor = true
         '
         'CheckBox3
         '
-        Me.CheckBox3.AutoSize = True
+        Me.CheckBox3.AutoSize = true
         Me.CheckBox3.Location = New System.Drawing.Point(857, 434)
         Me.CheckBox3.Name = "CheckBox3"
         Me.CheckBox3.Size = New System.Drawing.Size(81, 17)
         Me.CheckBox3.TabIndex = 12
         Me.CheckBox3.Text = "introduction"
-        Me.CheckBox3.UseVisualStyleBackColor = True
+        Me.CheckBox3.UseVisualStyleBackColor = true
         '
         'Label1
         '
-        Me.Label1.AutoSize = True
+        Me.Label1.AutoSize = true
         Me.Label1.Location = New System.Drawing.Point(12, 15)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(30, 13)
@@ -161,36 +161,36 @@ Partial Class Form1
         '
         'RadioButton1
         '
-        Me.RadioButton1.AutoSize = True
-        Me.RadioButton1.Checked = True
+        Me.RadioButton1.AutoSize = true
+        Me.RadioButton1.Checked = true
         Me.RadioButton1.Location = New System.Drawing.Point(337, 11)
         Me.RadioButton1.Name = "RadioButton1"
         Me.RadioButton1.Size = New System.Drawing.Size(88, 17)
         Me.RadioButton1.TabIndex = 15
-        Me.RadioButton1.TabStop = True
+        Me.RadioButton1.TabStop = true
         Me.RadioButton1.Text = "@bienvenida"
-        Me.RadioButton1.UseVisualStyleBackColor = True
+        Me.RadioButton1.UseVisualStyleBackColor = true
         '
         'RadioButton2
         '
-        Me.RadioButton2.AutoSize = True
+        Me.RadioButton2.AutoSize = true
         Me.RadioButton2.Location = New System.Drawing.Point(431, 11)
         Me.RadioButton2.Name = "RadioButton2"
         Me.RadioButton2.Size = New System.Drawing.Size(122, 17)
         Me.RadioButton2.TabIndex = 16
-        Me.RadioButton2.TabStop = True
+        Me.RadioButton2.TabStop = true
         Me.RadioButton2.Text = "@introduceyoursel(f)"
-        Me.RadioButton2.UseVisualStyleBackColor = True
+        Me.RadioButton2.UseVisualStyleBackColor = true
         '
         'CheckBox4
         '
-        Me.CheckBox4.AutoSize = True
+        Me.CheckBox4.AutoSize = true
         Me.CheckBox4.Location = New System.Drawing.Point(662, 434)
         Me.CheckBox4.Name = "CheckBox4"
         Me.CheckBox4.Size = New System.Drawing.Size(64, 17)
         Me.CheckBox4.TabIndex = 17
         Me.CheckBox4.Text = "Spanish"
-        Me.CheckBox4.UseVisualStyleBackColor = True
+        Me.CheckBox4.UseVisualStyleBackColor = true
         '
         'Button4
         '
@@ -199,7 +199,7 @@ Partial Class Form1
         Me.Button4.Size = New System.Drawing.Size(151, 69)
         Me.Button4.TabIndex = 18
         Me.Button4.Text = "Remove"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.Button4.UseVisualStyleBackColor = true
         '
         'Button6
         '
@@ -208,7 +208,7 @@ Partial Class Form1
         Me.Button6.Size = New System.Drawing.Size(189, 19)
         Me.Button6.TabIndex = 19
         Me.Button6.Text = "Remove"
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.Button6.UseVisualStyleBackColor = true
         '
         'Button8
         '
@@ -217,7 +217,7 @@ Partial Class Form1
         Me.Button8.Size = New System.Drawing.Size(151, 35)
         Me.Button8.TabIndex = 20
         Me.Button8.Text = "Publish Only"
-        Me.Button8.UseVisualStyleBackColor = True
+        Me.Button8.UseVisualStyleBackColor = true
         '
         'Button9
         '
@@ -226,13 +226,13 @@ Partial Class Form1
         Me.Button9.Size = New System.Drawing.Size(177, 29)
         Me.Button9.TabIndex = 21
         Me.Button9.Text = "Batch Open"
-        Me.Button9.UseVisualStyleBackColor = True
+        Me.Button9.UseVisualStyleBackColor = true
         '
         'Form1
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(6!, 13!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1031, 455)
+        Me.ClientSize = New System.Drawing.Size(997, 455)
         Me.Controls.Add(Me.Button9)
         Me.Controls.Add(Me.Button8)
         Me.Controls.Add(Me.Button6)
@@ -255,10 +255,10 @@ Partial Class Form1
         Me.Controls.Add(Me.ListBox1)
         Me.Name = "Form1"
         Me.Text = "@bienvenida/@introduceyoursel(f)"
-        Me.ResumeLayout(False)
-        Me.PerformLayout()
+        Me.ResumeLayout(false)
+        Me.PerformLayout
 
-    End Sub
+End Sub
 
     Friend WithEvents ListBox1 As ListBox
     Friend WithEvents Button1 As Button

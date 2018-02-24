@@ -111,7 +111,7 @@ Public Class Form1
                 End While
                 LogFile.WriteLine(Environment.NewLine & "---------------------" & Environment.NewLine)
                 LogFile.WriteLine("<center>Les recordamos que existen varias iniciativas para ayudar a la comunidad hispana a crecer:</center>" & Environment.NewLine)
-                LogFile.WriteLine("<center>[Click aquí para ver la lista de las inciativas](https://steem.place/Iniciativas)</center>")
+                LogFile.WriteLine("<center>[Click aquí para ver la lista de las inciativas](https://steem.place/es/Iniciativas)</center>")
                 LogFile.WriteLine(Environment.NewLine & "---------------------" & Environment.NewLine)
                 LogFile.WriteLine("<center>[¡Vota al Witness @castellano!](https://v2.steemconnect.com/sign/account-witness-vote?witness=castellano&approve=1)</center>")
                 LogFile.WriteLine(Environment.NewLine & "---------------------" & Environment.NewLine)
@@ -465,16 +465,18 @@ Public Class Form1
 
     Private Function GetPostTitle(Link As String)
         Link = Link.Remove(0, 1)
+        Dim Title As String = String.Empty
         Try
             Dim myWebRequest As System.Net.WebRequest = System.Net.WebRequest.Create("https://api.steem.place/getPostTitle/?p=" & Link)
             Dim myWebResponse As System.Net.WebResponse = myWebRequest.GetResponse()
             Dim ReceiveStream As Stream = myWebResponse.GetResponseStream()
             Dim encode As Encoding = System.Text.Encoding.GetEncoding("utf-8")
             Dim readStream As New StreamReader(ReceiveStream, encode)
-            Return readStream.ReadLine
+            Title = readStream.ReadLine
         Catch ex As Exception
-            GetPostTitle(Link)
+            Title = Link
         End Try
+        Return Title
     End Function
     Private Async Sub SendMessage(fulldate As String, datestring As String)
         Dim Channel As DiscordChannel = Await DiscordClient.GetChannelAsync(369214082349268992)
