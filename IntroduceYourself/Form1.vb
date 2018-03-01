@@ -15,12 +15,16 @@ Public Class Form1
         RefreshListBox()
     End Sub
     Private Sub RefreshListBox()
-        ListBox1.Items.Clear()
-        ListBox2.Items.Clear()
-        ListBox3.Items.Clear()
-        LoadPosts()
-        LoadOKPosts()
-        LoadFlaggedPosts()
+        Try
+            ListBox1.Items.Clear()
+            ListBox2.Items.Clear()
+            ListBox3.Items.Clear()
+            LoadPosts()
+            LoadOKPosts()
+            LoadFlaggedPosts()
+        Catch ex As Exception
+            MsgBox("Date format may be incorrect.")
+        End try
     End Sub
     Private Sub LoadPosts()
         Dim TextBoxDate As DateTime = DateTime.ParseExact(TextBox1.Text, "MM/dd/yyyy", Nothing)
