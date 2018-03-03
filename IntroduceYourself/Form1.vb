@@ -91,7 +91,7 @@ Public Class Form1
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         Dim TextBoxDate As DateTime = DateTime.ParseExact(TextBox1.Text, "MM/dd/yyyy", Nothing)
         If RadioButton1.Checked Then
-            Dim SQLQuery As String = "SELECT DISTINCT * FROM bienvenida WHERE verified=1 AND posted LIKE '" & TextBoxDate.ToString("yyyy/MM/dd") & "%' ORDER BY username ASC"
+            Dim SQLQuery As String = "SELECT DISTINCT username, link FROM bienvenida WHERE verified=1 AND posted LIKE '" & TextBoxDate.ToString("yyyy/MM/dd") & "%' ORDER BY username ASC"
             Dim Connection As MySqlConnection = New MySqlConnection(MySQLString)
             Dim Command As New MySqlCommand(SQLQuery, Connection)
             Connection.Open()
@@ -125,7 +125,7 @@ Public Class Form1
                 SendMessage(FullDate, TextBox1.Text)
             End If
         Else
-            Dim SQLQuery As String = "SELECT DISTINCT * FROM introduceyourself WHERE verified=1 AND posted LIKE '" & TextBoxDate.ToString("yyyy/MM/dd") & "%' ORDER BY username ASC"
+            Dim SQLQuery As String = "SELECT DISTINCT username, link FROM introduceyourself WHERE verified=1 AND posted LIKE '" & TextBoxDate.ToString("yyyy/MM/dd") & "%' ORDER BY username ASC"
             Dim Connection As MySqlConnection = New MySqlConnection(MySQLString)
             Dim Command As New MySqlCommand(SQLQuery, Connection)
             Connection.Open()
