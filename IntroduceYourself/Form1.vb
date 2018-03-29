@@ -6,9 +6,6 @@ Imports MySql.Data.MySqlClient
 
 Public Class Form1
     Private WithEvents DiscordClient As DiscordClient
-    Private DiscordChannelObject As DiscordChannel
-    Private WithEvents DiscordClientLogger As DebugLogger
-
     Dim MySQLString As String = String.Empty
 
     Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
@@ -117,9 +114,7 @@ Public Class Form1
                 LogFile.WriteLine("<center>Les recordamos que existen varias iniciativas para ayudar a la comunidad hispana a crecer:</center>" & Environment.NewLine)
                 LogFile.WriteLine("<center>[Click aquí para ver la lista de las inciativas](https://steem.place/es/Iniciativas)</center>")
                 LogFile.WriteLine(Environment.NewLine & "---------------------" & Environment.NewLine)
-                LogFile.WriteLine("<center>[¡Vota al Witness @castellano!](https://v2.steemconnect.com/sign/account-witness-vote?witness=castellano&approve=1)</center>")
-                LogFile.WriteLine(Environment.NewLine & "---------------------" & Environment.NewLine)
-                LogFile.WriteLine("<center>Reporte generado por el software de @moisesmcardona. [Vótalo como Witness presionando aquí](https://v2.steemconnect.com/sign/account-witness-vote?witness=moisesmcardona&approve=1)</center>" & Environment.NewLine & Environment.NewLine)
+                LogFile.WriteLine("<center>Reporte generado por el software de @moisesmcardona.<br>[Vótalo como Witness presionando aquí](https://v2.steemconnect.com/sign/account-witness-vote?witness=moisesmcardona&approve=1)</center>" & Environment.NewLine & Environment.NewLine)
                 LogFile.Close()
                 PublishReport(FullDate)
                 SendMessage(FullDate, TextBox1.Text)
@@ -318,13 +313,13 @@ Public Class Form1
             reader.Close()
             dataStream.Close()
             response.Close()
-            If responseFromServer = "ok" & vbLf Then
-                MessageBox.Show("Report Generated And posted")
+            If responseFromServer.Contains("ok") Then
+                MessageBox.Show("Report generated and posted")
             Else
-                MessageBox.Show("An Error occured While posting the report")
+                MessageBox.Show("An error occured While posting the report: " + responseFromServer)
             End If
         Catch ex As Exception
-            MessageBox.Show("An Error has occurred.")
+            MessageBox.Show("An error has occurred.")
         End Try
     End Sub
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
@@ -518,7 +513,6 @@ Public Class Form1
             .AutoReconnect = True
         End With
         Me.DiscordClient = New DiscordClient(dcfg)
-        Me.DiscordClientLogger = Me.DiscordClient.DebugLogger
         Await Me.DiscordClient.ConnectAsync()
     End Sub
 
