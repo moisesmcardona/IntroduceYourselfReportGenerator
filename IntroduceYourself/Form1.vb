@@ -98,7 +98,7 @@ Public Class Form1
             If reader.HasRows = True Then
                 Dim FullDate As String = GetFullDate(TextBoxDate)
                 LogFile.WriteLine("<center>![](https://steem.place/images/Bienvenida.PNG)</center>")
-                LogFile.WriteLine("Los siguientes usuarios han escrito su post de introducción utilizando la tag *spanish* y/o *castellano* en el día de ayer, " & FullDate.ToLower & ". La lista está en orden alfabético:" & Environment.NewLine & Environment.NewLine)
+                LogFile.WriteLine("Los siguientes usuarios han escrito su post de introducción utilizando la tag **spanish** y/o **castellano** en el día de ayer, " & FullDate.ToLower & ". La lista está en orden alfabético:" & Environment.NewLine & Environment.NewLine)
                 LogFile.WriteLine("Usuario | Post")
                 LogFile.WriteLine("------- | ----")
                 Dim Link As String = ""
