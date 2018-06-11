@@ -8,7 +8,7 @@ Public Class Form1
     Private WithEvents DiscordClient As DiscordClient
     Dim MySQLString As String = String.Empty
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+    Private Sub Button2_Click(sender As Object, e As System.EventArgs) Handles Button2.Click
         RefreshListBox()
     End Sub
     Private Sub RefreshListBox()
@@ -21,7 +21,7 @@ Public Class Form1
             LoadFlaggedPosts()
         Catch ex As Exception
             MsgBox("Date format may be incorrect.")
-        End try
+        End Try
     End Sub
     Private Sub LoadPosts()
         Dim TextBoxDate As DateTime = DateTime.ParseExact(TextBox1.Text, "MM/dd/yyyy", Nothing)
@@ -85,7 +85,7 @@ Public Class Form1
         If ListBox1.SelectedIndex >= 0 Then Process.Start("https://steemit.com/tag/" & ListBox1.SelectedItem)
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As System.EventArgs) Handles Button1.Click
         Dim TextBoxDate As DateTime = DateTime.ParseExact(TextBox1.Text, "MM/dd/yyyy", Nothing)
         If RadioButton1.Checked Then
             Dim SQLQuery As String = "SELECT DISTINCT username, link FROM bienvenida WHERE verified=1 AND posted LIKE '" & TextBoxDate.ToString("yyyy/MM/dd") & "%' ORDER BY username ASC"
@@ -98,7 +98,7 @@ Public Class Form1
             If reader.HasRows = True Then
                 Dim FullDate As String = GetFullDate(TextBoxDate)
                 LogFile.WriteLine("<center>![](https://steem.place/images/Bienvenida.PNG)</center>")
-                LogFile.WriteLine("Los siguientes usuarios han escrito su introducción a la comunidad o publicado su primer post en español utilizando el tag *spanish* en el día " & FullDate.ToLower & ". La lista está en orden alfabético:" & Environment.NewLine & Environment.NewLine)
+                LogFile.WriteLine("Los siguientes usuarios han escrito su post de introducción utilizando la tag *spanish* y/o *castellano* en el día de ayer, " & FullDate.ToLower & ". La lista está en orden alfabético:" & Environment.NewLine & Environment.NewLine)
                 LogFile.WriteLine("Usuario | Post")
                 LogFile.WriteLine("------- | ----")
                 Dim Link As String = ""
@@ -107,14 +107,14 @@ Public Class Form1
                 While reader.Read
                     Link = reader("link")
                     User = reader("username")
-                    Title = getPostTitle(Link)
+                    Title = GetPostTitle(Link)
                     LogFile.WriteLine("@" & User & " | [" & Title.Replace("|", ":") & "](https://steemit.com/tag/" & Link & ")")
                 End While
                 LogFile.WriteLine(Environment.NewLine & "---------------------" & Environment.NewLine)
                 LogFile.WriteLine("<center>Les recordamos que existen varias iniciativas para ayudar a la comunidad hispana a crecer:</center>" & Environment.NewLine)
                 LogFile.WriteLine("<center>[Click aquí para ver la lista de las inciativas](https://steem.place/es/Iniciativas)</center>")
                 LogFile.WriteLine(Environment.NewLine & "---------------------" & Environment.NewLine)
-                LogFile.WriteLine("<center>Reporte generado por el software de @moisesmcardona.<br>[Vótalo como Witness presionando aquí](https://v2.steemconnect.com/sign/account-witness-vote?witness=moisesmcardona&approve=1)</center>" & Environment.NewLine & Environment.NewLine)
+                LogFile.WriteLine("<center>Este reporte fue generado por los inventos y ""scripts"" del Witness @moisesmcardona.<br>[Vótalo como Witness presionando aquí](https://v2.steemconnect.com/sign/account-witness-vote?witness=moisesmcardona&approve=1)</center>" & Environment.NewLine & Environment.NewLine)
                 LogFile.Close()
                 PublishReport(FullDate)
                 SendMessage(FullDate, TextBox1.Text)
@@ -139,7 +139,7 @@ Public Class Form1
                 While reader.Read
                     Link = reader("link")
                     User = reader("username")
-                    Title = getPostTitle(Link)
+                    Title = GetPostTitle(Link)
                     LogFile.WriteLine("@" & User & " | [" & Title.Replace("|", ":") & "](https://steemit.com/tag/" & Link & ")")
                 End While
                 LogFile.WriteLine(Environment.NewLine & "---------------------" & Environment.NewLine)
@@ -306,7 +306,7 @@ Public Class Form1
             Dim dataStream As Stream = request.GetRequestStream()
             dataStream.Write(byteArray, 0, byteArray.Length)
             dataStream.Close()
-            Dim response As Net.WebResponse = request.GetResponse()
+            Dim response As System.Net.WebResponse = request.GetResponse()
             dataStream = response.GetResponseStream()
             Dim reader As New StreamReader(dataStream)
             Dim responseFromServer As String = reader.ReadToEnd()
@@ -322,7 +322,7 @@ Public Class Form1
             MessageBox.Show("An error has occurred.")
         End Try
     End Sub
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As Object, e As System.EventArgs) Handles Button3.Click
         If ListBox2.SelectedIndex >= 0 Then
             Dim SQLQuery2 As String = ""
             If RadioButton1.Checked Then
@@ -347,7 +347,7 @@ Public Class Form1
         If ListBox2.SelectedIndex >= 0 Then Process.Start("https://steemit.com/tag/" & ListBox2.SelectedItem)
     End Sub
 
-    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+    Private Sub Button5_Click(sender As Object, e As System.EventArgs) Handles Button5.Click
         If ListBox2.SelectedIndex >= 0 Then
             Dim SQLQuery2 As String = ""
             If RadioButton1.Checked Then
@@ -372,7 +372,7 @@ Public Class Form1
         If ListBox3.SelectedIndex >= 0 Then Process.Start("https://steemit.com/tag/" & ListBox3.SelectedItem)
     End Sub
 
-    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+    Private Sub Button7_Click(sender As Object, e As System.EventArgs) Handles Button7.Click
         Dim AccountFile As StreamReader = New StreamReader("IntroduceYourselfAccount.txt")
         Dim currentline As String = ""
         Dim Account As String = ""
@@ -444,7 +444,7 @@ Public Class Form1
                 Dim dataStream As Stream = request.GetRequestStream()
                 dataStream.Write(byteArray, 0, byteArray.Length)
                 dataStream.Close()
-                Dim response As Net.WebResponse = request.GetResponse()
+                Dim response As System.Net.WebResponse = request.GetResponse()
                 dataStream = response.GetResponseStream()
                 Dim reader As New StreamReader(dataStream)
                 Dim responseFromServer As String = reader.ReadToEnd()
@@ -478,16 +478,17 @@ Public Class Form1
         Return Title
     End Function
     Private Async Sub SendMessage(fulldate As String, datestring As String)
-        Dim Channel As DiscordChannel = Await DiscordClient.GetChannelAsync(369214082349268992)
+        Dim Channel As Entities.DiscordChannel = Await DiscordClient.GetChannelAsync(369214082349268992)
         Await DiscordClient.SendMessageAsync(Channel, fulldate & ": https://steemit.com/tag/@bienvenida/reporte-" & datestring.Replace("/", "-"))
     End Sub
-    Private Async Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Async Sub Form1_Load(sender As Object, e As System.EventArgs) Handles MyBase.Load
         Dim MySQLFile As StreamReader = New StreamReader("MySQLConfig.txt")
         Dim currentline As String = ""
         Dim MySQLServer As String = ""
         Dim MySQLUser As String = ""
         Dim MySQLPassword As String = ""
         Dim MySQLDatabase As String = ""
+        Dim SSLMode As String = ""
         While MySQLFile.EndOfStream = False
             currentline = MySQLFile.ReadLine
             If currentline.Contains("server") Then
@@ -502,10 +503,13 @@ Public Class Form1
             ElseIf currentline.Contains("database") Then
                 Dim GetDatabase As String() = currentline.Split("=")
                 MySQLDatabase = GetDatabase(1)
+            ElseIf currentline.Contains("sslmode") Then
+                Dim GetSSLMode As String() = currentline.Split("=")
+                SSLMode = GetSSLMode(1)
             End If
         End While
-        MySQLString = "server=" + MySQLServer + ";user=" + MySQLUser + ";database=" + MySQLDatabase + ";port=3306;password=" + MySQLPassword + ";"
-        Dim dcfg As New DiscordConfig
+        MySQLString = "server=" + MySQLServer + ";user=" + MySQLUser + ";database=" + MySQLDatabase + ";port=3306;password=" + MySQLPassword + ";sslmode=" + SSLMode
+        Dim dcfg As New DiscordConfiguration
         With dcfg
             .Token = My.Computer.FileSystem.ReadAllText("token.txt")
             .TokenType = TokenType.Bot
@@ -516,7 +520,7 @@ Public Class Form1
         Await Me.DiscordClient.ConnectAsync()
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+    Private Sub Button4_Click(sender As Object, e As System.EventArgs) Handles Button4.Click
         If ListBox1.SelectedIndex >= 0 Then
             Dim SQLQuery2 As String = ""
             If RadioButton1.Checked Then
@@ -533,7 +537,7 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+    Private Sub Button6_Click(sender As Object, e As System.EventArgs) Handles Button6.Click
         If ListBox3.SelectedIndex >= 0 Then
             Dim SQLQuery2 As String = ""
             If RadioButton1.Checked Then
@@ -550,11 +554,11 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+    Private Sub Button8_Click(sender As Object, e As System.EventArgs) Handles Button8.Click
         PublishReport(GetFullDate(DateTime.ParseExact(TextBox1.Text, "MM/dd/yyyy", Nothing)))
     End Sub
 
-    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
+    Private Sub Button9_Click(sender As Object, e As System.EventArgs) Handles Button9.Click
         If ListBox2.Items.Count >= 30 Then
             For i As Integer = 0 To 29
                 Process.Start("https://steemit.com/tag/" & ListBox2.Items.Item(i))
