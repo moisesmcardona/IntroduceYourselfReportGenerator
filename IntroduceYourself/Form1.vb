@@ -562,7 +562,7 @@ Public Class Form1
         Dim ItemsToLoad As Integer = ListBox2.Items.Count
         If ItemsToLoad >= 30 Then
             ItemsToLoad = 30
-        end if
+        End If
         For i As Integer = 0 To ItemsToLoad - 1
             Process.Start("https://steemit.com/tag/" & ListBox2.Items.Item(i))
             Threading.Thread.Sleep(300)
