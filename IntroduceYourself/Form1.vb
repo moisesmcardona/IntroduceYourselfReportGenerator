@@ -559,16 +559,13 @@ Public Class Form1
     End Sub
 
     Private Sub Button9_Click(sender As Object, e As System.EventArgs) Handles Button9.Click
-        If ListBox2.Items.Count >= 30 Then
-            For i As Integer = 0 To 29
-                Process.Start("https://steemit.com/tag/" & ListBox2.Items.Item(i))
-                Threading.Thread.Sleep(300)
-            Next
-        Else
-            For i As Integer = 0 To ListBox2.Items.Count - 1
-                Process.Start("https://steemit.com/tag/" & ListBox2.Items.Item(i))
-                Threading.Thread.Sleep(300)
-            Next
-        End If
+        Dim ItemsToLoad As Integer = ListBox2.Items.Count
+        If ItemsToLoad >= 30 Then
+            ItemsToLoad = 30
+        end if
+        For i As Integer = 0 To ItemsToLoad - 1
+            Process.Start("https://steemit.com/tag/" & ListBox2.Items.Item(i))
+            Threading.Thread.Sleep(300)
+        Next
     End Sub
 End Class
